@@ -124,6 +124,7 @@ resource "aws_security_group" "allow-web" {
   }
 
   egress {
+    description = "output"
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
