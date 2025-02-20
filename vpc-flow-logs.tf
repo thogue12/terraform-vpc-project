@@ -7,6 +7,7 @@ resource "aws_flow_log" "this" {
 
 resource "aws_cloudwatch_log_group" "this" {
   name = "example"
+  
 }
 
 data "aws_iam_policy_document" "assume_role" {
@@ -47,4 +48,16 @@ resource "aws_iam_role_policy" "this" {
   name   = "example"
   role   = aws_iam_role.this.id
   policy = data.aws_iam_policy_document.example.json
+}
+
+
+resource "aws_kms_key" "log_encryption" {
+  description             = "KMS key for CloudWatch log encryption"
+  deletion_window_in_days = 7
+  enable_key_rotation     = true
+}
+
+resource "aws_cloudwatch_log_group" "this" {
+  name       = "example"
+  kms_key_id = aws_kms_key.log_encryption.arn
 }
