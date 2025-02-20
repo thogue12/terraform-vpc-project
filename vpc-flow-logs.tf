@@ -7,6 +7,7 @@ resource "aws_flow_log" "this" {
 
 resource "aws_cloudwatch_log_group" "this" {
   name = "example"
+  kms_key_id = aws_kms_key.log_encryption.arn
   
 }
 
@@ -55,9 +56,4 @@ resource "aws_kms_key" "log_encryption" {
   description             = "KMS key for CloudWatch log encryption"
   deletion_window_in_days = 7
   enable_key_rotation     = true
-}
-
-resource "aws_cloudwatch_log_group" "this" {
-  name       = "example"
-  kms_key_id = aws_kms_key.log_encryption.arn
 }
