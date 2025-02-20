@@ -14,7 +14,7 @@ jobs:
 
     steps:
     - name: 'Checkout GitHub repository'
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
 
     - name: 'Configure AWS credentials'
       uses: aws-actions/configure-aws-credentials@v1
@@ -26,7 +26,7 @@ jobs:
     - name: 'Set up Terraform'
       uses: hashicorp/setup-terraform@v1
       with:
-        terraform_version: ${{ env.TF_VERSION }}
+        terraform_version: "latest"
 
     - name: 'Terraform Init'
       run: terraform init
