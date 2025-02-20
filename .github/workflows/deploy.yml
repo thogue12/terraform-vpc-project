@@ -42,6 +42,11 @@ jobs:
         chmod +x tfsec
         mv tfsec /usr/local/bin/
         tfsec --version
+      
+    - name: Run tfsec (only fail on high severity)
+      uses: aquasecurity/tfsec-action@v1
+      with:
+        additional_args: "--severity HIGH"
 
     - name: 'Terraform Init'
       run: terraform init
