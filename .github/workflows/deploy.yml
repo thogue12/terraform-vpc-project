@@ -46,7 +46,7 @@ jobs:
     - name: Run tfsec (only fail on high severity)
       uses: aquasecurity/tfsec-action@v1.0.0
       with:
-        run: "--minimum-severity CRITICAL"
+        args: "--minimum-severity CRITICAL"
 
     - name: 'Terraform Init'
       run: terraform init
