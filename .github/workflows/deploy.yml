@@ -44,7 +44,7 @@ jobs:
         tfsec --version
       
     - name: Run tfsec (only fail on high severity)
-      uses: aquasecurity/tfsec-action@v1
+      uses: aquasecurity/tfsec-action@v2
       with:
         additional_args: "--severity HIGH"
 
