@@ -48,7 +48,7 @@ data "aws_iam_policy_document" "this" {
 resource "aws_iam_role_policy" "this" {
   name   = "example"
   role   = aws_iam_role.this.id
-  policy = data.aws_iam_policy_document.example.json
+  policy = data.aws_iam_policy_document.this.json
 }
 
 
